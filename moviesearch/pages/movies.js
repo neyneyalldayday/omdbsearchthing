@@ -1,35 +1,49 @@
-import react, {useState} from 'react';
+import react, {useEffect, useState} from 'react';
+import MovieDump from './movedump';
+import { MovieTitle } from './movieTitle';
+import { SearchBox } from './searchBox';
 
-export default function Movies({ movies }) {
 
-    const [movies, setMovies] = useState([]);
+
+export default function Movies(initialData) {
+
+    const [searchResults, setSearchResults] = useState([]);
+   
+  useEffect(() => {
+      setSearchResults(initialData.response.Search)
+  }, [initialData])
+   
 
     return (
         <>
-        <div className="search-box">
-        <h1 className="search-title">gonna search some movies</h1>
-        <div>
-            <form>
-                <label className="search-label">search</label>
-                <input type="text"/>
-                <button className="search-button" type="submit">Submit</button>
-            </form>
-        </div>
-        </div>
+        <SearchBox />
+        <div className='movie-dump-container'>         
+            {searchResults.map((each, index) => {
+                return (
+                    <MovieDump
+                    index={each.imdbID}
+                    Title={each.Title}
+                    Poster={each.Poster}                   
+                    />
+                )
+            })}
         
+        </div>       
         </>
     )
 }
  
 export async function getServerSideProps() {
 
-    const apikey = process.env.API_KEY
-   
-    const movies = await fetch('http://www.omdbapi.com/?s=movie&apikey='+ apikey).then(r => r.json())
-    console.log(movies)
+    const apikey = process.env.API_KEY   
+    const response = await fetch('http://www.omdbapi.com/?s=movie&apikey='+ apikey).then(r => r.json())
+    
+    
+    console.log(response)
     return {
         props: {
-            movies
+            response
         }
     }
+  
 }
