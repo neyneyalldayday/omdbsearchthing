@@ -1,6 +1,6 @@
 import react, {useEffect, useState} from 'react';
 import MovieDump from './movedump';
-import { MovieTitle } from './movieTitle';
+
 import { SearchBox } from './searchBox';
 
 
