@@ -24,7 +24,10 @@ export default function Movies(initialData) {
       let movies = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=d254f211`);
       console.log(movies)
       movies = await movies.json()
-      setSearchResults(movies.response)
+
+      console.log(movies, "movies")
+      setSearchResults(movies.Search)
+
   }
 
    useEffect(() => {
