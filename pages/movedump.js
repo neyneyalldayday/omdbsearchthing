@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 
-
+// i used styled components for this section just to keep track of the stying of this specific component
 const PosterContainer = styled.ul`
   margin: 1rem;
   padding: 1.5rem;
@@ -25,10 +24,26 @@ const PosterContainer = styled.ul`
   }
 `;
 
+const DetailsContainer = styled.div`
+  margin: 1rem;
+  padding: 1.5rem;
+  max-width: 400px;
+`;
 
+const Dtitle = styled.h3`
+  text-decoration: underline;
+`;
+
+const Details = styled.div`
+   font-style: italic;
+    font-weight: bold;
+`;
+
+// making an api call based off the current title that is served up in the card
+//and changing the data every time the title changes
 export default function MovieDump({Title, index, Poster, imdbID}) {  
     
-    const [id, setId] = useState([]);
+    const [id, setId] = useState([]);    
 
     useEffect(() => {
         async function getID() {
@@ -38,20 +53,22 @@ export default function MovieDump({Title, index, Poster, imdbID}) {
             setId(await resp.json());
         }
         getID();
-    }, [])
- 
+    }, [Title])
+
+   
+ // my thought was to attatch the details to the component so that it flows along with the cards dynamically
     return (
         <>     
-        <PosterContainer key={index} >
-        
-         <h3>{Title}</h3> 
-          <Link href={`/movieDeets/${id}`}>         
+        <PosterContainer key={index} >        
+         <h3>{Title}</h3>                
            <img src={Poster} 
            alt={Title} 
            index={imdbID}                           
-           />         
-           </Link>              
-           {/* <div>{JSON.stringify(id)}</div> */}
+           />                     
+           <DetailsContainer> 
+             <Dtitle>Details</Dtitle>            
+             <Details>{JSON.stringify(id.Plot)}</Details>            
+           </DetailsContainer>          
         </PosterContainer>               
         </>
         
