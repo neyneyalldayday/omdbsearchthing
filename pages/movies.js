@@ -1,5 +1,9 @@
 import {useEffect, useState} from 'react';
 import MovieDump from './movedump';
+import Layout from '../components/layout';
+
+
+
 
 
 
@@ -10,7 +14,9 @@ export default function Movies(initialData) {
     const [searchResults, setSearchResults] = useState([]);
     const [formInput, setFormInputs] = useState({});
     const [searchTerm, setSearchTerm] = useState('');
-    console.log(searchTerm);
+   
+   
+    
    
   
   const handleInput = (event) => {
@@ -21,13 +27,12 @@ export default function Movies(initialData) {
 
   const search = async (event) => {    
       event.preventDefault();
-      let movies = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=d254f211`);
-      console.log(movies)
+      //couldnt get my api key to work in an environment variable here eeesh security leak
+      let movies = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&type=movie&plot=full&apikey=d254f211`);     
       movies = await movies.json()
-
       console.log(movies, "movies")
       setSearchResults(movies.Search)
-
+     
   }
 
    useEffect(() => {
@@ -37,13 +42,12 @@ export default function Movies(initialData) {
    
 
     return (
-        <>
+        <Layout>
          <div className="search-box">
-         <h1 className="search-title">gonna search some movies</h1>
+         <h1 className="search-title">search some movies</h1>
          <div>
-             <form onSubmit={search}>
-                 <label className="search-label">search</label>
-                 <input type="text" name='searchTerm' value={searchTerm} onChange={handleInput} required/>
+             <form onSubmit={search} className="sub-form">                
+                 <input className='search-input' placeholder='search' type="text" name='searchTerm' value={searchTerm} onChange={handleInput} required/>                 
                  <button  className="search-button" type="submit">Submit</button>
              </form>
          </div>
@@ -52,15 +56,17 @@ export default function Movies(initialData) {
             {searchResults.map((each, index) => {
                 console.log(searchResults)
                 return (
+                   
                     <MovieDump
                     index={each.imdbID}
                     Title={each.Title}
-                    Poster={each.Poster}                   
+                    Poster={each.Poster}                                     
                     />
+                     
                 )
-            })}        
+            })}            
          </div>       
-        </>
+        </Layout>
     )
 }
  

@@ -1,13 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { 
-    FaFacebook, 
-    FaInstagram, 
-    FaLinkedin,
-    FaTwitter, 
-    FaYoutube, 
-} from "react-icons/fa"
+import { faImdb } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const FooterContainer = styled.div`
 background: linear-gradient(120deg, rgb(236, 136, 236, 2.8) 10%, rgba(155, 25, 95, 1) 50%);
@@ -36,19 +31,6 @@ margin: 20px auto;
 }
 
 `
-
-const SocialLogo = styled.a`
-    color: #fff;
-    justify-self: start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    align-items: center;
-    margin-bottom: 16px;
-`;
-
-
-
 const WebsiteRights = styled.small`
     color: #fff;
     margin-bottom: 16px;
@@ -59,7 +41,7 @@ const SocialIcons = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 240px
+width: 240px;
 `;
 
 const SocialIconLink = styled.a`
@@ -72,38 +54,15 @@ const Footer = () => {
   return (
     <FooterContainer>
     <SocialMed>
-    <SocialMediaWrap>
-    <SocialLogo>  
-        
-    </SocialLogo>
+    <SocialMediaWrap>    
     <WebsiteRights>{new Date().getFullYear()}</WebsiteRights>
-    <SocialIcons>
-    <Link href="/" passHref>
-    <SocialIconLink  target="_blank" aria-label="Facebook">
-       <FaFacebook /> 
-    </SocialIconLink>
-    </Link>
-    <Link href="/" passHref>
-    <SocialIconLink  target="_blank" aria-label="Instagram">
-       <FaInstagram /> 
-    </SocialIconLink>
-    </Link>
-    <Link href="/" passhref>
-    <SocialIconLink  target="_blank" aria-label="Youtube" rel="noopener noreferrer">
-       <FaYoutube /> 
-    </SocialIconLink>
-    </Link>
-    <Link href="/" passHref>
-    <SocialIconLink  target="_blank" aria-label="Twitter">
-       <FaTwitter /> 
-    </SocialIconLink>
-    </Link>
-    <Link href="/" passHref>
-    <SocialIconLink target="_blank" aria-label="LinkedIn">
-       <FaLinkedin /> 
+    <SocialIcons>   
+    <Link href="http://www.omdbapi.com" passHref>
+    <SocialIconLink target="_blank" aria-label="omdb" >
+    <FontAwesomeIcon icon={faImdb} />
     </SocialIconLink>
     </Link>       
-</SocialIcons>
+    </SocialIcons>
     </SocialMediaWrap>
     </SocialMed>
     </FooterContainer>

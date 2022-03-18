@@ -20,7 +20,7 @@
 
 
 .search-input{
-    height: 3rem;
+    height: 2.5rem;
     width: 100%;
 }
 
@@ -28,5 +28,18 @@
     width:100%;
     height: 2rem;
     background-color: rgb(90, 214, 90);
+}
+
+.search-label {
+    position:absolute;
+	left:10px;
+	font-weight:bold;
+	font-size:0.8em;
+	color:#444;
+	top:9px;  
+}
+
+.sub-form {
+    position: relative;
 }
 

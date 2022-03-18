@@ -16,3 +16,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.hello-message {
+  font-size: larger;
+  color: rgb(126, 226, 226, 2.8)
+}

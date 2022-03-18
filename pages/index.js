@@ -15,9 +15,16 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="http://www.omdbapi.com">OMDB</a>
-        </h1>      
-      </main>      
+          Welcome to <a href="http://www.omdbapi.com">OMDB</a> Movie Search App
+        </h1> 
+        <div>
+          <p className="hello-message">
+            Thank you for the opportunity to showcase a little bit of how i code my projects.<br></br> 
+            Click the movie search button in the navbar to take you to the movie search  page.
+          </p>
+        </div>     
+      </main> 
+        
     </div>
     </Layout>
   )

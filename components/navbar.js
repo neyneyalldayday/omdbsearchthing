@@ -143,8 +143,13 @@ const Navbar = () => {
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>               
                 <NavItem>
+                <Link  href="/" passHref>
+                <NavLinks>home</NavLinks>
+                </Link>                   
+                </NavItem>               
+                <NavItem>
                 <Link  href="/movies" passHref>
-                <NavLinks>search some movies</NavLinks>
+                <NavLinks>search movies</NavLinks>
                 </Link>                   
                 </NavItem>               
             </NavMenu>
