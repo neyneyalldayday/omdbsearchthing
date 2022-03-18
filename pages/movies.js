@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import MovieDump from './movedump';
-import Layout from '../components/layout';
+import Layout from '../pages/layout';
 
 
 export default function Movies(initialData) {
@@ -71,7 +71,7 @@ export async function getServerSideProps() {
     const apikey = process.env.API_KEY   
     const response = await fetch('http://www.omdbapi.com/?s=movie&apikey='+ apikey).then(r => r.json())   
 
-    console.log(response)
+    
     return {
         props: {
             response
