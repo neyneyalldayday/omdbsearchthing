@@ -20,7 +20,7 @@ export default function Movies(initialData) {
   const search = async (event) => {    
       event.preventDefault();
       //couldnt get my api key to work in an environment variable here eeesh security leak
-      let movies = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&type=movie&plot=full&apikey=d254f211`);     
+      let movies = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&type=movie&plot=full&apikey=d254f211`);     
       movies = await movies.json()          
       if(!movies.Search) {
           return alert('no movies found')
@@ -69,7 +69,7 @@ export default function Movies(initialData) {
 export async function getServerSideProps() {
 
     const apikey = process.env.API_KEY   
-    const response = await fetch('http://www.omdbapi.com/?s=movie&apikey='+ apikey).then(r => r.json())   
+    const response = await fetch('https://www.omdbapi.com/?s=movie&apikey='+ apikey).then(r => r.json())   
 
     
     return {

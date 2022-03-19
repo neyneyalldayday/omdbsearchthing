@@ -48,7 +48,7 @@ export default function MovieDump({Title, index, Poster, imdbID}) {
     useEffect(() => {
         async function getID() {
             const resp = await fetch(
-                `http://www.omdbapi.com/?t=${Title}&type=movie&plot=full&apikey=d254f211`
+                `https://www.omdbapi.com/?t=${Title}&type=movie&plot=full&apikey=d254f211`
             );
             setId(await resp.json());
         }
