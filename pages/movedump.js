@@ -13,12 +13,12 @@ const PosterContainer = styled.ul`
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 400px;
-  background-color: rgb(126, 226, 226, );
+  background-color: rgb(126, 226, 226,);
 
   &:hover,
    :focus,
    :active {
-  color: #0070f3;
+  color: rgb(217, 162, 14);
   border-color: rgb(126, 226, 226, 2.8);
   box-shadow: 5px 5px rgb(126, 226, 226, 2.8)
   }
