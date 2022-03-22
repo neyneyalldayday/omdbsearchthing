@@ -27,6 +27,7 @@ width: 100%;
 max-width: 1000px;
 `;
 
+// i was trying to find a rackspace logo
 const NavLogo = styled.a`
 color: #141414;
 justify-self: flex-start;
